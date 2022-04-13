@@ -1,16 +1,13 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /tmp/tmp.qB6cQZp2RK
--- The C compiler identification is GNU 11.2.1
--- The CXX compiler identification is GNU 11.2.1
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
 -- Configuring done
--- Generating done
--- Build files have been written to: /tmp/tmp.qB6cQZp2RK/cmake-build-debug
+CMake Error at CMakeLists.txt:6 (add_executable):
+  Cannot find source file:
+
+    cmake-build-debug/weight.cpp
+
+
+CMake Error at CMakeLists.txt:6 (add_executable):
+  No SOURCES given to target: ee205_lab12a_fatCat
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

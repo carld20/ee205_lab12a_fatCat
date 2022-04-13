@@ -3,4 +3,4 @@ project(ee205_lab12a_fatCat)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(ee205_lab12a_fatCat main.cpp)
+add_executable(ee205_lab12a_fatCat main.cpp cmake-build-debug/weight.cpp cmake-build-debug/weight.h)
