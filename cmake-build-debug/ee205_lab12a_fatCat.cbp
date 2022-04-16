@@ -83,6 +83,12 @@
 		<Unit filename="/tmp/tmp.qB6cQZp2RK/main.cpp">
 			<Option target="ee205_lab12a_fatCat"/>
 		</Unit>
+		<Unit filename="/tmp/tmp.qB6cQZp2RK/weight.cpp">
+			<Option target="ee205_lab12a_fatCat"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.qB6cQZp2RK/weight.h">
+			<Option target="ee205_lab12a_fatCat"/>
+		</Unit>
 		<Unit filename="/tmp/tmp.qB6cQZp2RK/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

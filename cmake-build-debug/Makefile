@@ -153,6 +153,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ee205_lab12a_fatCat.dir/build.make CMakeFiles/ee205_lab12a_fatCat.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+weight.o: weight.cpp.o
+.PHONY : weight.o
+
+# target to build an object file
+weight.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ee205_lab12a_fatCat.dir/build.make CMakeFiles/ee205_lab12a_fatCat.dir/weight.cpp.o
+.PHONY : weight.cpp.o
+
+weight.i: weight.cpp.i
+.PHONY : weight.i
+
+# target to preprocess a source file
+weight.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ee205_lab12a_fatCat.dir/build.make CMakeFiles/ee205_lab12a_fatCat.dir/weight.cpp.i
+.PHONY : weight.cpp.i
+
+weight.s: weight.cpp.s
+.PHONY : weight.s
+
+# target to generate assembly for a file
+weight.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ee205_lab12a_fatCat.dir/build.make CMakeFiles/ee205_lab12a_fatCat.dir/weight.cpp.s
+.PHONY : weight.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... weight.o"
+	@echo "... weight.i"
+	@echo "... weight.s"
 .PHONY : help
 
 

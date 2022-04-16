@@ -6,6 +6,7 @@
 /// @version 1.0
 ///
 /// @author Carl Domingo <carld20@hawaii.edu>
-/// @date   13_Apr_2022
+/// @date   15_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#include "weight.h"
