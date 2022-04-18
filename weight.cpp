@@ -13,6 +13,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <iomanip>
+#include <cstring>
 
 #include "weight.h"
 
@@ -115,41 +116,62 @@ float Weight::getMaxWeight() const noexcept {
     return maxWeight;
 }
 
+//Operators
+ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight ){
+    switch( rhs_UnitOfWeight ) {
+        case Weight::POUND:
+            return lhs_stream << Weight::POUND_LABEL;
+        case Weight::KILO:
+            return lhs_stream << Weight::KILO_LABEL;
+        case Weight::SLUG:
+            return lhs_stream << Weight::SLUG_LABEL;
+        default:
+            throw out_of_range("FatCat: The unit can't be mapped to a string" );
+    }
+}
+
 Weight::UnitOfWeight Weight::getWeightUnit() const noexcept {
-    return unitOfWeight;
+   return unitOfWeight;
 }
 //Constructors
 Weight::Weight() noexcept{
     weight = UNKNOWN_WEIGHT;
     unitOfWeight = POUND;
+    maxWeight = -1;
+
 }
 
 Weight::Weight( float newWeight ){
     setWeight( newWeight );
+    bIsKnown = true;
 }
 
 Weight::Weight( UnitOfWeight newUnitOfWeight ) noexcept{
     unitOfWeight = newUnitOfWeight;
 }
 
-Weight::Weight( float newWeight, const Weight::UnitOfWeight newUnitOfWeight ){
-    weight = newWeight;
+Weight::Weight( float newWeight, const Weight::UnitOfWeight newUnitOfWeight ): Weight( newUnitOfWeight ){
+    setWeight( newWeight );
+
 }
 
 Weight::Weight( float newWeight, float maxWeight ){
-    newWeight = maxWeight;
+    setWeight( newWeight );
+    setMaxWeight( maxWeight );
+    bHasMax = true;
 }
 
-Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight ){
-    maxWeight = newMaxWeight;
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ):Weight ( newUnitOfWeight ){
+    setMaxWeight( newMaxWeight );
 }
 
-Weight::Weight( float newWeight, const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ): Weight( newUnitOfWeight ){
+Weight::Weight( float newWeight, const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ):Weight( newUnitOfWeight, newMaxWeight ){
+    setWeight( newWeight );
     setMaxWeight( newMaxWeight );
 }
 
 void Weight::setMaxWeight(float newMaxWeight) {
-    Weight::weight = newMaxWeight;
+    Weight::maxWeight = newMaxWeight;
     bHasMax = true;
 }
 
@@ -180,3 +202,6 @@ void Weight::dump() const noexcept{
     FORMAT_LINE( "Weight", "maxWeight" )        << getMaxWeight() << endl;
 
 }
+
+
+

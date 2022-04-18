@@ -15,9 +15,9 @@
 
 
 int main() {
-    Weight testWeight = Weight();
+    Weight testWeight = Weight( 15, Weight::KILO,45 );
 
-    testWeight.setWeight( 20.3, Weight::KILO );
+
     testWeight.dump();
 
 
