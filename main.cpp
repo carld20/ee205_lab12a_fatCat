@@ -17,7 +17,7 @@
 int main() {
     Weight testWeight = Weight( 15, Weight::KILO,45 );
 
-
+    testWeight.isWeightValid( 30 );
     testWeight.dump();
 
 

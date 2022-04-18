@@ -75,7 +75,7 @@ float Weight::convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeigh
 }
 
 bool Weight::isWeightValid(float checkWeight) const noexcept {
-    if( checkWeight <= 0 ){
+    if( checkWeight <= 0 && checkWeight < maxWeight ){
         throw invalid_argument( "FatCat: Weight has reached maxWeight or is not possible" );
     }
     return true;
@@ -103,7 +103,7 @@ float Weight::getWeight() const noexcept {
 }
 
 float Weight::getWeight( UnitOfWeight weightUnits ) const noexcept{
-    if( !bIsKnown ){
+    if( bIsKnown ){
         throw logic_error( "FatCat: There is no weight to convert" );
     }
     return convertWeight( getWeight(), getWeightUnit(), weightUnits );
@@ -116,7 +116,6 @@ float Weight::getMaxWeight() const noexcept {
     return maxWeight;
 }
 
-//Operators
 ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight ){
     switch( rhs_UnitOfWeight ) {
         case Weight::POUND:
@@ -189,7 +188,7 @@ void Weight::setWeight( float newWeight, const Weight::UnitOfWeight weightUnits 
 }
 
 void Weight::dump() const noexcept{
-    cout << "Weight noWeight" << endl;
+    cout << "Weight testWeight( 15, Weight::KILO, 45" << endl;
     cout << setw(80) << setfill('=') << "" << endl;
     cout << setfill( ' ' );
     cout << left;
@@ -203,5 +202,18 @@ void Weight::dump() const noexcept{
 
 }
 
+/*Operators
+bool Weight::operator==(const Weight &rhs_Weight) const {
+    float lhs_weight = ( bIsKnown ) ? getWeight( Weight::POUND ): 0;
+    float rhs_weight = ( rhs_Weight.bIsKnown ) ? rhs_weight.getWeight( Weight::POUND ): 0;
+
+    return lhs_weight == rhs_weight;
+}
+
+bool Weight::operator+=(float rhs_addToWeight) {
+    float lhs_weight = ( bIsKnown ) ? getWeight( )
+}
 
 
+
+*/
