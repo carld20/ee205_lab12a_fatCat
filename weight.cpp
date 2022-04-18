@@ -26,3 +26,20 @@ const float Weight::SLUGS_IN_POUND = 0.031081;
 const string Weight::POUND_LABEL = "Pound";
 const string Weight::KILO_LABEL = "Kilo";
 const string Weight::SLUG_LABEL = "Slug";
+
+float Weight::fromKiloToPound(float kilogram) noexcept {
+    return kilogram / KILOS_IN_POUND;
+}
+
+float Weight::fromPoundToKilo(float pound) noexcept {
+    return pound * KILOS_IN_POUND;
+}
+
+float Weight::fromSlugToPound(float slug) noexcept {
+    return slug / SLUGS_IN_POUND;
+}
+
+float Weight::fromPoundToSlug(float pound) noexcept {
+    return pound * SLUGS_IN_POUND;
+}
+

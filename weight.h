@@ -13,9 +13,11 @@
 #include <string>
 
 using namespace std;
-enum UnitOfWeight {POUND, KILO, SLUG};
 
 class Weight {
+public:
+    enum UnitOfWeight {POUND, KILO, SLUG};
+
 public:
     Weight() noexcept;
     Weight( float newWeight );
@@ -45,12 +47,18 @@ public:
     Weight &operator+=( float rhs_addToWeight );
 
 public:
+    static float fromKiloToPound(float kilogram ) noexcept;
+    static float fromPoundToKilo( float pound ) noexcept;
+    static float fromSlugToPound( float slug ) noexcept;
+    static float fromPoundToSlug( float pound ) noexcept;
+
+public:
     static const float UNKNOWN_WEIGHT;
-    static const float KILOS_IN_POUND;
-    static const float SLUGS_IN_POUND;
-    static const string POUND_LABEL;
-    static const string KILO_LABEL;
-    static const string SLUG_LABEL;
+    static const float KILOS_IN_POUND; //kg to lb conv
+    static const float SLUGS_IN_POUND; //slug to lb conv
+    static const string POUND_LABEL; //lb label
+    static const string KILO_LABEL; //kg label
+    static const string SLUG_LABEL; //slug label
 
 private:
     void setMaxWeight( float newMaxWeight );
