@@ -31,7 +31,7 @@ public:
     bool isWeightKnown() const noexcept;
     bool hasMaxWeight() const noexcept;
     float getWeight() const noexcept;
-    float getWeight( UnitOfWeight ) const noexcept;
+    float getWeight( UnitOfWeight weightUnits ) const noexcept;
     float getMaxWeight() const noexcept;
 
 public:

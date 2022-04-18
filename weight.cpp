@@ -45,16 +45,73 @@ float Weight::fromPoundToSlug(float pound) noexcept {
     return pound * SLUGS_IN_POUND;
 }
 
-bool Weight::isWeightValid(float checkWeight) const noexcept {
-    if( checkWeight > 0 ){
-        return true;
+float Weight::convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) {
+    if( toUnit == POUND ){
+        if( fromUnit == KILO ) {
+            return fromKiloToPound(fromWeight);
+        }
+        if( fromUnit == SLUG ){
+            return fromSlugToPound( fromWeight );
+        }
     }
-    return false;
+    if( toUnit == KILO ){
+        if( fromUnit == POUND ){
+            return fromPoundToKilo( fromWeight );
+        }
+        if( fromUnit == SLUG ){
+            return fromPoundToKilo(fromSlugToPound( fromWeight ) );
+        }
+    }
+    if( toUnit == SLUG ){
+        if( fromUnit == POUND ){
+            return fromPoundToSlug( fromWeight );
+        }
+        if( fromUnit == KILO ){
+            return fromPoundToSlug(fromKiloToPound( fromWeight ) );
+        }
+    }
+    throw logic_error("FatCat: Parameters are invalid");
+}
+
+bool Weight::isWeightValid(float checkWeight) const noexcept {
+    if( checkWeight <= 0 && checkWeight < maxWeight ){
+        throw invalid_argument( "FatCat: Weight has reached maxWeight or is not possible" );
+    }
+    return true;
+}
+
+bool Weight::isWeightKnown() const noexcept {
+    if( !bIsKnown ){
+        return false;
+    }
+    return true;
+}
+
+bool Weight::hasMaxWeight() const noexcept{
+    if( !bHasMax ){
+        return false;
+    }
+    return true;
+}
+
+float Weight::getWeight() const noexcept {
+    return weight;
+}
+
+float Weight::getWeight( UnitOfWeight weightUnits ) const noexcept{
+    return convertWeight( getWeight(), getWeightUnit(), weightUnits );
+}
+
+float Weight::getMaxWeight() const noexcept {
+    return maxWeight;
+}
+
+Weight::UnitOfWeight Weight::getWeightUnit() const noexcept {
+    return unitOfWeight;
 }
 //Constructors
 Weight::Weight() noexcept{
     weight = UNKNOWN_WEIGHT;
-    maxWeight = 10.0;
     unitOfWeight = POUND;
 }
 
@@ -84,13 +141,15 @@ Weight::Weight( float newWeight, const Weight::UnitOfWeight newUnitOfWeight, con
 
 void Weight::setMaxWeight(float newMaxWeight) {
     Weight::weight = newMaxWeight;
+    bHasMax = true;
 }
 
 void Weight::setWeight( float newWeight ){
     Weight::weight = newWeight;
+    bIsKnown = true;
 }
 
-void Weight::setWeight( float newWeight, UnitOfWeight weightUnits ){
+void Weight::setWeight( float newWeight, const Weight::UnitOfWeight weightUnits ){
     Weight::weight = newWeight;
     Weight::unitOfWeight = weightUnits;
 }

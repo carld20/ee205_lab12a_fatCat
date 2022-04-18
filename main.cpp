@@ -9,4 +9,14 @@
 /// @date   15_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#include <iostream>
+
 #include "weight.h"
+
+
+int main() {
+    Weight testWeight;
+
+    testWeight.setWeight( 9.2 );
+
+}
