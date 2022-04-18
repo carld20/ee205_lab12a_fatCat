@@ -45,9 +45,15 @@ float Weight::fromPoundToSlug(float pound) noexcept {
     return pound * SLUGS_IN_POUND;
 }
 
+bool Weight::isWeightValid(float checkWeight) const noexcept {
+    if( checkWeight > 0 ){
+        return true;
+    }
+    return false;
+}
 //Constructors
 Weight::Weight() noexcept{
-    weight = 1.0;
+    weight = UNKNOWN_WEIGHT;
     maxWeight = 10.0;
     unitOfWeight = POUND;
 }
@@ -75,3 +81,25 @@ Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight )
 Weight::Weight( float newWeight, const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ): Weight( newUnitOfWeight ){
     setMaxWeight( newMaxWeight );
 }
+
+void Weight::setMaxWeight(float newMaxWeight) {
+    Weight::weight = newMaxWeight;
+}
+
+void Weight::setWeight( float newWeight ){
+    Weight::weight = newWeight;
+}
+
+void Weight::setWeight( float newWeight, UnitOfWeight weightUnits ){
+    Weight::weight = newWeight;
+    Weight::unitOfWeight = weightUnits;
+}
+/* continue later, need help
+void Weight::dump() const noexcept{
+    cout << setw(80) << setfill('=') << "" << endl;
+    cout << setfill( ' ' );
+    cout << left;
+    cout << boolalpha;
+
+    FORMAT_LINE( "Weight", "weight")
+}*/
