@@ -15,10 +15,14 @@
 
 
 int main() {
-    Weight testWeight = Weight( 15, Weight::KILO,45 );
+    Weight testWeight1 = Weight();
+    testWeight1.dump();
 
-    testWeight.isWeightValid( 30 );
-    testWeight.dump();
+
+    Weight testWeight2 = Weight( 15, Weight::KILO,45 );
+
+    testWeight2.isWeightValid( 30 );
+    testWeight2.dump();
 
 
 }

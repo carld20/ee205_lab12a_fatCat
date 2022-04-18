@@ -188,7 +188,7 @@ void Weight::setWeight( float newWeight, const Weight::UnitOfWeight weightUnits 
 }
 
 void Weight::dump() const noexcept{
-    cout << "Weight testWeight( 15, Weight::KILO, 45" << endl;
+    cout << "Weight testWeight( 15, Weight::KILO, 45)" << endl;
     cout << setw(80) << setfill('=') << "" << endl;
     cout << setfill( ' ' );
     cout << left;
@@ -202,18 +202,17 @@ void Weight::dump() const noexcept{
 
 }
 
-/*Operators
+//Operators
 bool Weight::operator==(const Weight &rhs_Weight) const {
     float lhs_weight = ( bIsKnown ) ? getWeight( Weight::POUND ): 0;
-    float rhs_weight = ( rhs_Weight.bIsKnown ) ? rhs_weight.getWeight( Weight::POUND ): 0;
+    float rhs_weight = ( rhs_Weight.bIsKnown ) ? rhs_Weight.getWeight( Weight::POUND ): 0;
 
     return lhs_weight == rhs_weight;
 }
 
-bool Weight::operator+=(float rhs_addToWeight) {
-    float lhs_weight = ( bIsKnown ) ? getWeight( )
+bool Weight::operator<( const Weight &rhs_Weight ) const{
+    float lhs_weight = ( bIsKnown ) ? getWeight( Weight::POUND ): 0;
+    float rhs_weight = (rhs_Weight.bIsKnown ) ? rhs_Weight.getWeight( Weight:: POUND ): 0;
+
+    return rhs_weight > lhs_weight;
 }
-
-
-
-*/
