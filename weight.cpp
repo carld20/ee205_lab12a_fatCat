@@ -27,6 +27,8 @@ const string Weight::POUND_LABEL = "Pound";
 const string Weight::KILO_LABEL = "Kilo";
 const string Weight::SLUG_LABEL = "Slug";
 
+
+//Weight conversions
 float Weight::fromKiloToPound(float kilogram) noexcept {
     return kilogram / KILOS_IN_POUND;
 }
@@ -43,3 +45,33 @@ float Weight::fromPoundToSlug(float pound) noexcept {
     return pound * SLUGS_IN_POUND;
 }
 
+//Constructors
+Weight::Weight() noexcept{
+    weight = 1.0;
+    maxWeight = 10.0;
+    unitOfWeight = POUND;
+}
+
+Weight::Weight( float newWeight ){
+    weight = newWeight;
+}
+
+Weight::Weight( UnitOfWeight newUnitOfWeight ) noexcept{
+    unitOfWeight = newUnitOfWeight;
+}
+
+Weight::Weight( float newWeight, const Weight::UnitOfWeight newUnitOfWeight ){
+    weight = newWeight;
+}
+
+Weight::Weight( float newWeight, float maxWeight ){
+    newWeight = maxWeight;
+}
+
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight ){
+    maxWeight = newMaxWeight;
+}
+
+Weight::Weight( float newWeight, const Weight::UnitOfWeight newUnitOfWeight, const float newMaxWeight ): Weight( newUnitOfWeight ){
+    setMaxWeight( newMaxWeight );
+}

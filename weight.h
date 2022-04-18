@@ -47,15 +47,16 @@ public:
     Weight &operator+=( float rhs_addToWeight );
 
 public:
-    static float fromKiloToPound(float kilogram ) noexcept;
-    static float fromPoundToKilo( float pound ) noexcept;
-    static float fromSlugToPound( float slug ) noexcept;
-    static float fromPoundToSlug( float pound ) noexcept;
+    static float fromKiloToPound(float kilogram ) noexcept; //kg to lb conv
+    static float fromPoundToKilo( float pound ) noexcept; //lb to kg conv
+    static float fromSlugToPound( float slug ) noexcept; //slug to lb conv
+    static float fromPoundToSlug( float pound ) noexcept; //lb to slug conv
+    static float convertWeight( float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit );
 
 public:
     static const float UNKNOWN_WEIGHT;
-    static const float KILOS_IN_POUND; //kg to lb conv
-    static const float SLUGS_IN_POUND; //slug to lb conv
+    static const float KILOS_IN_POUND; //kg to pound constant
+    static const float SLUGS_IN_POUND;  //slug to pound constant
     static const string POUND_LABEL; //lb label
     static const string KILO_LABEL; //kg label
     static const string SLUG_LABEL; //slug label
