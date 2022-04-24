@@ -13,16 +13,18 @@
 
 #include "weight.h"
 
+using namespace std;
 
 int main() {
-    Weight testWeight1 = Weight();
-    testWeight1.dump();
+    cout << "Starting FatCat:" << endl;
+    cout << "Weight noWeight" << endl;
+    Weight noWeight;
+    noWeight.dump();
 
+    cout<< "Weight catWeight( 3.14, Kilo, 15" << endl;
+    Weight catWeight( 3.14, Weight::KILO, 15 );
+    catWeight.dump();
 
-    Weight testWeight2 = Weight( 15, Weight::KILO,45 );
-
-    testWeight2.isWeightValid( 30 );
-    testWeight2.dump();
-
-
+    cout << "Done with FatCat" << endl;
+    return EXIT_SUCCESS;
 }
